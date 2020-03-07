@@ -1,4 +1,8 @@
 ﻿var Account_Profile = {
+    Init: function () {
+        Helper.Module.Init("AccountMenu");
+    },
+
     Save: function ()
     {
         var name = $("#account-profile-name").val();
