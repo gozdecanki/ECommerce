@@ -18,7 +18,7 @@ namespace ECommerce.Web.Controllers
             return View(user);
         }
 
-        public IActionResult ProfileSaveAction([FromBody] Data.DTOs.Account_ProfileSave_Action_Request account_ProfileSave_Action_Request)
+        public IActionResult ProfileSaveAction([FromBody] Data.DTOs.Account_ProfileSave_Action_Request dto)
         {
             if (!ModelState.IsValid)
             {
@@ -26,12 +26,11 @@ namespace ECommerce.Web.Controllers
             }
 
             int? userId = HttpContext.Session.GetInt32("UserId");
-
             var user = _unitOfWork.UserRepository.Get((int)userId);
 
-            user.Name= account_ProfileSave_Action_Request.Name;
-            user.Surname = account_ProfileSave_Action_Request.Surname;
-            user.Email = account_ProfileSave_Action_Request.Email;
+            user.Name= dto.Name;
+            user.Surname = dto.Surname;
+            user.Email = dto.Email;
             _unitOfWork.UserRepository.Update(user);
             _unitOfWork.Complete();
 
@@ -41,6 +40,28 @@ namespace ECommerce.Web.Controllers
         public IActionResult ChangePassword()
         {
             return View();
+        }
+
+        public IActionResult ChangePasswordAction([FromBody] Data.DTOs.Account_ChangePasswordAction_Request dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("bad boy");
+            }
+
+            int userId = HttpContext.Session.GetInt32("UserId").Value;
+            var user = _unitOfWork.UserRepository.GetById(userId);
+
+            if (user.Password==Helper.CryptoHelper.Sha1(dto.Password))
+            {
+                user.Password = Helper.CryptoHelper.Sha1(dto.NewPassword);//yeni şifreyi güncelledik
+                _unitOfWork.Complete();
+            }
+            else
+            {
+                return BadRequest("Şifre, mevcut şifreniz ile aynı değil.");
+            }
+            return new JsonResult("ok");
         }
     }
 }

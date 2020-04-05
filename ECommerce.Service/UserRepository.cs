@@ -30,5 +30,10 @@ namespace ECommerce.Service
                 .Include(a => a.Title)
                 .SingleOrDefault(a => a.Id == id);
         }
+
+        public User GetByEmail(string email)
+        {
+            return _dataContext.Users.SingleOrDefault(a => a.Email == email );
+        }
     }
 }

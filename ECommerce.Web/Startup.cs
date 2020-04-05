@@ -34,7 +34,7 @@ namespace ECommerce.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDbContext<Data.Contexts.DataContext>(a => a
-                .UseSqlServer("Server=localhost;Database=YMS8518_ECommerce;User Id=sa;Password=123;"));
+                .UseSqlServer("Server=DESKTOP-35635TI\\BASQLSERVER;Database=YMS8518_ECommerce;User Id=sa;Password=123456;"));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -74,6 +74,7 @@ namespace ECommerce.Web
                                     if (user != null)
                                     {
                                         context.Session.SetInt32("UserId", user.Id);
+                                        context.Session.SetInt32("Admin", Convert.ToInt32(user.Admin));
                                     }
                                 }
                             }
