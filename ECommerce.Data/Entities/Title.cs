@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ECommerce.Data.Entities
 {
@@ -8,6 +6,5 @@ namespace ECommerce.Data.Entities
     {
         public string Name { get; set; }
         public virtual ICollection<User> Users { get; set; }
-
     }
 }

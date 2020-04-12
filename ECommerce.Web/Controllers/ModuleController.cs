@@ -32,6 +32,7 @@ namespace ECommerce.Web.Controllers
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             var user = _unitOfWork.UserRepository.GetById((int)userId);
+
             return View(user);
         }
     }

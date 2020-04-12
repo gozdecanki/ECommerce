@@ -5,6 +5,5 @@
         Entities.User GetByEmailAndPassword(string email, string password);
         Entities.User GetByAutoLoginKey(System.Guid autoLoginKey);
         Entities.User GetById(int id);
-        Entities.User GetByEmail(string email);
     }
 }

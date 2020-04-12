@@ -107,7 +107,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Styles -->
     <!--begin::Layout Skins(used by all pages) -->
     <!--end::Layout Skins -->
-
     <!-- begin::Global Config(global config for global JS sciprts) -->
     <script>
         var KTAppOptions = {
@@ -314,10 +313,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Page Scripts(used by this page) -->
     <script src="~/assets/js/pages/dashboard.js" type="text/javascript"></script>
     <script src="~/assets/js/pages/custom/user/profile.js" type="text/javascript"></script>
-    
-    <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
-    <script src="/js/Helper.js?_dt=@DateTime.UtcNow.Ticks"></script>
+    <!--end::Page Scripts -->
 
+
+    <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+
+    <script src="~/js/Helper.js?_dt=@DateTime.UtcNow.Ticks"></script>
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
@@ -326,7 +327,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- begin:: Header Mobile -->
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
-            <a href="@Url.Action("Index","Home")">
+            <a href="@Url.Action("Index", "Home")">
                 <img alt="Logo" src="~/assets/media/logos/logo-8-sm.png" />
             </a>
         </div>
@@ -346,7 +347,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- begin:: Brand -->
                             <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
                                 <div class="kt-header__brand-logo">
-                                    <a href="@Url.Action("Index","Home")">
+                                    <a href="@Url.Action("Index", "Home")">
                                         <img alt="Logo" src="~/assets/media/logos/logo-8.png" class="kt-header__brand-logo-default" />
                                         <img alt="Logo" src="~/assets/media/logos/logo-8-inverse.png" class="kt-header__brand-logo-sticky" />
                                     </a>
@@ -1051,7 +1052,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </ul>
                                             </div>
                                         </li>
-                                      
                                         @{
                                             int? admin = Context.Session.GetInt32("Admin");
                                             if (admin != null && (int)admin != 0)
@@ -1207,7 +1207,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </li>
                                             }
                                         }
-
                                     </ul>
                                 </div>
                             </div>
@@ -2214,8 +2213,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
     </div>
     <!--ENd:: Chat-->
-   
-
+    
     <script src="~/js/page/Layout.js?_dt=@DateTime.UtcNow.Ticks"></script>
     <script>
         $(document).ready(function () {
