@@ -56,6 +56,12 @@ namespace ECommerce.Data.Contexts
                     Id = 1,
                     Name = "Header"
                 });
+            modelBuilder.Entity<Entities.Menu>().HasData(new Menu()
+
+            {
+                Id = 2,
+                Name = "Footer"
+            });
         }
     }
 }
