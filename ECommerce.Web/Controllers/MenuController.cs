@@ -14,6 +14,10 @@ namespace ECommerce.Web.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
+
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)]
         [Route("/menu/getir")]
         public IActionResult Get()
         {

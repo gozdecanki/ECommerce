@@ -13,6 +13,9 @@ namespace ECommerce.Web.Controllers
             _unitOfWork = unitOfWork;
         }
 
+
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)] //buraya müsteriler de girebilir
         public IActionResult Profile()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -20,6 +23,8 @@ namespace ECommerce.Web.Controllers
             return View(user);
         }
 
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)] //buraya sadece yöneticiler girebilir
         public IActionResult ProfileSaveAction([FromBody]Data.DTO.Account_ProfileSaveAction_Request dto)
         {
             if (!ModelState.IsValid)
@@ -40,11 +45,17 @@ namespace ECommerce.Web.Controllers
             return new JsonResult(user);
         }
 
+
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)]
         public IActionResult ChangePassword()
         {
             return View();
         }
 
+
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)]
         public IActionResult ChangePasswordAction([FromBody] Data.DTO.Account_ChangePasswordAction_Request dto)
         {
             if (!ModelState.IsValid) return BadRequest("Kötü çocuk");

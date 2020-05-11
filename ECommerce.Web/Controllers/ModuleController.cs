@@ -12,6 +12,9 @@ namespace ECommerce.Web.Controllers
             _unitOfWork = unitOfWork;
         }
 
+
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)]
         public IActionResult UserBar()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -28,6 +31,9 @@ namespace ECommerce.Web.Controllers
             }
         }
 
+
+        [FilterContext.Log]
+        [FilterContext.Auth(Data.Enum.UserTitle.Customer)]
         public IActionResult AccountMenu()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
